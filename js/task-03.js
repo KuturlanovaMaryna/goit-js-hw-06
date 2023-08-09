@@ -12,4 +12,20 @@ const images = [
     alt: 'Group of Horses Running',
   },
 ];
-for(let el of images) document.querySelector('.gallery').insertAdjacentHTML('beforeEnd', `<li><img src="${el.url}" alt="${el.alt}" width = "150" height = "100"></li>`);
+const galleryListEl = document.querySelector("ul");
+
+
+const element = images
+  .map(function ({ url, alt }) {
+    return `<li><img src = '${url}' alt = '${alt}' width="360"></li>`;
+  })
+   .join("");
+galleryListEl.insertAdjacentHTML("afterbegin", element);
+
+galleryListEl.style.cssText = `display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  `;
